@@ -1,25 +1,21 @@
 import React, { Component} from 'react';
 import ToDoItem from './ToDoItem';
-// import PropTypes from 'prop-types';
+import './style.css';
 
 class ToDo extends Component {
   render() {
     return this.props.todo.map((todoo) => (
-      <ToDoItem key={todoo.id} todoo={todoo} markComplete={this.props.markComplete} />
+      <ToDoItem key={todoo.id} className="todoo" todoo={todoo} markComplete={this.props.markComplete} delToDo={this.props.delToDo} />
     ));
   }
 }
-
-// ToDo.propTypes = {
-//   todoo: PropTypes.array.isRequired
-// }
 
 export default ToDo;
 
 /*
 Since we have this array of todo's, we want to loop through them and output something such as the actual text. Use the map higher order array method for this.
 It can return an array from an array.
-We will just use it to loop through an output JSX.
+We will just use it to loop through and output JSX.
 Use an arrow function inside the map method with a parameter of todoitem.
 For each todo that we map through, write what do we want to display in the browser.
 todooitem will be an object and choose the property we want (title).
