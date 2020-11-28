@@ -1,20 +1,7 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
+import './style.css';
 
 class ToDoItem extends Component {
-    // getStyle = () => {
-    //     return {
-    //         background: "lightblue"
-    //         padding: 10px
-    //         borderBottom: '1px #ccc dotted'
-    //         text-decoration: this.props.todoo.completed ? 'line-through' : 'none'
-    //     }
-    // }
-    //  style={this.getStyle()}
-
-    markComplete = (e) => {
-
-    }
 
     render() {
         const { id, title } = this.props.todoo;
@@ -23,15 +10,12 @@ class ToDoItem extends Component {
                 <p>
                     <input type="checkbox" onChange={this.props.markComplete.bind(this, id)} /> {' '}
                     { title }
+                    <button onClick={this.props.delToDo.bind(this, id)} className="btn">x</button>
                 </p>
             </div>
         )
     }
 }
-
-// ToDoItem.propTypes = {
-//     todoo: PropTypes.object.isRequired
-// }
 
 export default ToDoItem;
 
