@@ -1,0 +1,15 @@
+.input {
+    background: blue;
+    padding: 10px;
+    border-bottom: 1px #ccc dotted;
+}
+
+.btn {
+    background: red;
+    color: white;
+    border: 'none';
+    padding: 3px 7px;
+    border-radius: 50%;
+    cursor: 'pointer';
+    float: right;
+}
