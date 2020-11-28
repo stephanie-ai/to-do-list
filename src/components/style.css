@@ -1,5 +1,5 @@
-.input {
-    background: blue;
+.todoo {
+    background-color: blue;
     padding: 10px;
     border-bottom: 1px #ccc dotted;
 }
@@ -7,9 +7,9 @@
 .btn {
     background: red;
     color: white;
-    border: 'none';
+    border: none;
     padding: 3px 7px;
     border-radius: 50%;
-    cursor: 'pointer';
+    cursor: pointer;
     float: right;
 }
