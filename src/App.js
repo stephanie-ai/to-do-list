@@ -5,26 +5,16 @@ import AddToDo from './components/AddToDo';
 import Header from './components/layout/Header';
 import About from './components/pages/About';
 import './App.css';
+import axios from 'axios';
 
 class App extends Component {
     state = {
-        todo: [
-            {
-                id: 1,
-                title: 'Learn React',
-                completed: false 
-            },
-            {
-                id: 2,
-                title: 'Learn Redux',
-                completed: false 
-            },
-            {
-                id: 3,
-                title: 'Learn Lifecycle Components',
-                completed: false 
-            }
-        ]
+        todo: []
+    }
+
+    componentDidMount() {
+        axios.get('https://jsonplaceholder.typicode.com/todos?_limit=10')
+            .then(res => this.setState({ todo: res.data }));
     }
 
     markComplete = (id) => {
@@ -33,20 +23,26 @@ class App extends Component {
                 todoo.completed = !todoo.completed;
             }
             return todoo;
-        })});
+            })
+        });
     }
     
     delToDo = (id) => {
-        this.setState({ todo: [...this.state.todo.filter(todoo => todoo.id !== id)]});
+        axios.delete(`https://jsonplaceholder.typicode.com/todos/${id}`)
+            .then(res => this.setState({ todo: [...this.state.todo.filter(todoo => todoo.id !== id)]
+            })
+        );
     }
 
     AddToDo = (title) => {
-        const newToDo = {
-            id: 4,
-            title: title,
+        axios.post('https://jsonplaceholder.typicode.com/todos', {
+            title,
             completed: false
-        }
-        this.setState({ todo: [...this.state.todo, newToDo]})
+        })
+        .then(res => {
+            res.data.id
+            this.setState({ todo: [...this.state.todo, res.data]})
+        })
     }
 
 
@@ -83,5 +79,21 @@ For each todoo, we want to filter/return any todoo where the id is not equal to 
 
 The will come back when we refresh because they are not persisting to a database.
 
-Use setState and the spread operator for AddToDo. We need to make a copy of the state. Create a new variable called newToDo
+Use setState and the spread operator for AddToDo. We need to make a copy of the state. Create a new variable called newToDo.
+
+{
+                id: 1,
+                title: 'Learn React',
+                completed: false 
+            },
+            {
+                id: 2,
+                title: 'Learn Redux',
+                completed: false 
+            },
+            {
+                id: 3,
+                title: 'Learn Lifecycle Components',
+                completed: false 
+            }
 */
